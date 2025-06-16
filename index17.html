@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo del Cliente - Servientrega</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header img {
+            max-width: 150px;
+            border-radius: 10px;
+        }
+        main {
+            padding: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        main img.decorativa {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            border-color: #1e7e34;
+            outline: none;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #1e7e34;
+        }
+        .result {
+            margin-top: 20px;
+            display: none;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .result table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: url('SERVIENTREGA.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 10px;
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }
+        .result table::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(34, 139, 34, 0.8); /* Verde oscuro con opacidad */
+            z-index: 1;
+        }
+        .result table th,
+        .result table td {
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: left;
+            word-wrap: break-word;
+            position: relative;
+            z-index: 2;
+        }
+        .result table th {
+            background-color: rgba(40, 167, 69, 0.9); /* Verde claro con opacidad */
+            color: white;
+            font-weight: bold;
+        }
+        .result table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1); /* Blanco con opacidad */
+        }
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #28a745;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        @media (max-width: 480px) {
+            header img {
+                max-width: 120px;
+            }
+            main {
+                padding: 15px;
+            }
+            input[type="text"], button {
+                font-size: 14px;
+                padding: 8px;
+            }
+            .result table {
+                font-size: 12px;
+            }
+            .result th, .result td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="SERVIENTREGA.jpg" alt="Logo de Servientrega" id="logo">
+    </header>
+    <main>
+        <!-- Imagen decorativa/informativa -->
+        <img src="1.jpg" alt="Imagen Informativa" class="decorativa">
+        <h1>Recibo del Cliente</h1>
+        <form id="trackingForm">
+            <label for="guia">Número de Guía:</label>
+            <input type="text" id="guia" placeholder="Ingrese el número de guía">
+            <label for="remitente">Remitente/Origen:</label>
+            <input type="text" id="remitente" placeholder="Nombre del remitente">
+            <label for="cedulaRemitente">Cédula Remitente:</label>
+            <input type="text" id="cedulaRemitente" placeholder="Cédula del remitente">
+            <label for="telefonoRemitente">Teléfono Remitente:</label>
+            <input type="text" id="telefonoRemitente" placeholder="Teléfono del remitente">
+            <label for="correoRemitente">Correo Remitente:</label>
+            <input type="text" id="correoRemitente" placeholder="Correo del remitente">
+            <label for="direccionRemitente">Dirección Remitente:</label>
+            <input type="text" id="direccionRemitente" placeholder="Dirección del remitente">
+            <label for="ciudad">Ciudad de Recogida:</label>
+            <input type="text" id="ciudad" placeholder="Ciudad de recogida">
+            <label for="destinatario">Destinatario:</label>
+            <input type="text" id="destinatario" placeholder="Nombre del destinatario">
+            <label for="cedulaDestinatario">Cédula Destinatario:</label>
+            <input type="text" id="cedulaDestinatario" placeholder="Cédula del destinatario">
+            <label for="telefonoDestinatario">Teléfono Destinatario:</label>
+            <input type="text" id="telefonoDestinatario" placeholder="Teléfono del destinatario">
+            <label for="correoDestinatario">Correo Destinatario:</label>
+            <input type="text" id="correoDestinatario" placeholder="Correo del destinatario">
+            <label for="direccionDestinatario">Dirección Destinatario:</label>
+            <input type="text" id="direccionDestinatario" placeholder="Dirección del destinatario">
+            <label for="entrega">Ciudad de Entrega:</label>
+            <input type="text" id="entrega" placeholder="Ciudad de entrega">
+            <button type="button" onclick="generarRecibo()">Generar Recibo</button>
+        </form>
+        <div class="result" id="result">
+            <h2>Datos del Cliente</h2>
+            <table>
+                <tr><th>Campo</th><th>Información</th></tr>
+                <tr><td>Número de Guía:</td><td><span id="outputGuia"></span></td></tr>
+                <tr><td>Remitente/Origen:</td><td><span id="outputRemitente"></span></td></tr>
+                <tr><td>Cédula Remitente:</td><td><span id="outputCedulaRemitente"></span></td></tr>
+                <tr><td>Teléfono Remitente:</td><td><span id="outputTelefonoRemitente"></span></td></tr>
+                <tr><td>Correo Remitente:</td><td><span id="outputCorreoRemitente"></span></td></tr>
+                <tr><td>Dirección Remitente:</td><td><span id="outputDireccionRemitente"></span></td></tr>
+                <tr><td>Ciudad de Recogida:</td><td><span id="outputCiudad"></span></td></tr>
+                <tr><td>Destinatario:</td><td><span id="outputDestinatario"></span></td></tr>
+                <tr><td>Cédula Destinatario:</td><td><span id="outputCedulaDestinatario"></span></td></tr>
+                <tr><td>Teléfono Destinatario:</td><td><span id="outputTelefonoDestinatario"></span></td></tr>
+                <tr><td>Correo Destinatario:</td><td><span id="outputCorreoDestinatario"></span></td></tr>
+                <tr><td>Dirección Destinatario:</td><td><span id="outputDireccionDestinatario"></span></td></tr>
+                <tr><td>Ciudad de Entrega:</td><td><span id="outputEntrega"></span></td></tr>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <p>Contacto Oficial: 018000-123456</p>
+        <p>Email: contacto@servientrega.com</p>
+        <p>Misión: Brindar soluciones logísticas innovadoras y confiables.</p>
+        <p>Valores: Compromiso, Integridad, Excelencia, Sostenibilidad.</p>
+        <p>Derechos Reservados &copy; 2025 Servientrega Centro de Soluciones</p>
+    </footer>
+    <script>
+        function generarRecibo() {
+            const guia = document.getElementById("guia").value;
+            const remitente = document.getElementById("remitente").value;
+            const cedulaRemitente = document.getElementById("cedulaRemitente").value;
+            const telefonoRemitente = document.getElementById("telefonoRemitente").value;
+            const correoRemitente = document.getElementById("correoRemitente").value;
+            const direccionRemitente = document.getElementById("direccionRemitente").value;
+            const ciudad = document.getElementById("ciudad").value;
+            const destinatario = document.getElementById("destinatario").value;
+            const cedulaDestinatario = document.getElementById("cedulaDestinatario").value;
+            const telefonoDestinatario = document.getElementById("telefonoDestinatario").value;
+            const correoDestinatario = document.getElementById("correoDestinatario").value;
+            const direccionDestinatario = document.getElementById("direccionDestinatario").value;
+            const entrega = document.getElementById("entrega").value;
+            document.getElementById("outputGuia").textContent = guia;
+            document.getElementById("outputRemitente").textContent = remitente;
+            document.getElementById("outputCedulaRemitente").textContent = cedulaRemitente;
+            document.getElementById("outputTelefonoRemitente").textContent = telefonoRemitente;
+            document.getElementById("outputCorreoRemitente").textContent = correoRemitente;
+            document.getElementById("outputDireccionRemitente").textContent = direccionRemitente;
+            document.getElementById("outputCiudad").textContent = ciudad;
+            document.getElementById("outputDestinatario").textContent = destinatario;
+            document.getElementById("outputCedulaDestinatario").textContent = cedulaDestinatario;
+            document.getElementById("outputTelefonoDestinatario").textContent = telefonoDestinatario;
+            document.getElementById("outputCorreoDestinatario").textContent = correoDestinatario;
+            document.getElementById("outputDireccionDestinatario").textContent = direccionDestinatario;
+            document.getElementById("outputEntrega").textContent = entrega;
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
